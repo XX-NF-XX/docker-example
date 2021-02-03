@@ -1,0 +1,15 @@
+# development/debugging version
+version: '3.7'
+services:
+  demo-node-app:
+    image: demo-node-app
+    container_name: demo
+    volumes:
+      - ./src:/usr/src/app/src
+    environment:
+      - 'NODE_ENV=development'
+    ports:
+      - '3000:$PORT' # bind server port to local 3000
+      - '9222:9229' # bind inspector to local 9222
+    command: run debug
+    restart: always
